@@ -1,3 +1,4 @@
+import 'package:authandstore/screens/SignIn.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:authandstore/widgets/TextField.dart';
@@ -100,14 +101,14 @@ class _SignUpState extends State<SignUp> {
                         context,
                         MaterialPageRoute(
                           builder: (context) {
-                            return Home();
+                            return SignIn();
                           },
                         ),
                       );
                     } catch (e) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: Text("${e.toString()} Hi, How are you?"),
+                          content: Text("${e.toString()}"),
                         ),
                       );
                     }

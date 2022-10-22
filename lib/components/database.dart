@@ -50,6 +50,13 @@ class Database {
     return ItemCollection.snapshots();
   }
 
+  static Stream<QuerySnapshot> readUsers() {
+    CollectionReference UserCollection =
+        FirebaseFirestore.instance.collection("users");
+
+    return UserCollection.snapshots();
+  }
+
   static Future<void> deleteItem({
     required String docId,
   }) async {

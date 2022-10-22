@@ -1,4 +1,5 @@
 import 'package:authandstore/screens/SignIn.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:authandstore/widgets/TextField.dart';
@@ -15,9 +16,7 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   TextEditingController Email = TextEditingController();
   TextEditingController Password = TextEditingController();
-  TextEditingController Re_Password = TextEditingController();
-  TextEditingController Username = TextEditingController();
-  TextEditingController PhoneNumber = TextEditingController();
+  TextEditingController role = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -41,24 +40,8 @@ class _SignUpState extends State<SignUp> {
               height: 40,
             ),
             InputField(
-              myController: Username,
-              HintText: "Username",
-              Security: false,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            InputField(
               myController: Email,
               HintText: "Email",
-              Security: false,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            InputField(
-              myController: PhoneNumber,
-              HintText: "Phone Number",
               Security: false,
             ),
             const SizedBox(
@@ -73,9 +56,9 @@ class _SignUpState extends State<SignUp> {
               height: 20,
             ),
             InputField(
-              myController: Re_Password,
-              HintText: "Password",
-              Security: true,
+              myController: role,
+              HintText: "user or admin",
+              Security: false,
             ),
             const SizedBox(
               height: 20,
@@ -97,6 +80,11 @@ class _SignUpState extends State<SignUp> {
                           content: Text("Added Successfully"),
                         ),
                       );
+                      FirebaseFirestore.instance.collection("users").doc().set({
+                        "email": Email.text,
+                        "password": Password.text,
+                        "role": role.text,
+                      });
                       Navigator.push(
                         context,
                         MaterialPageRoute(

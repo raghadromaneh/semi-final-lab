@@ -4,6 +4,8 @@ import 'package:authandstore/components/database.dart';
 import 'package:authandstore/screens/EditScreen.dart';
 
 class DbItemList extends StatelessWidget {
+  var userUid;
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(

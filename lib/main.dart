@@ -1,3 +1,4 @@
+import 'package:authandstore/screens/ResetPassword.dart';
 import 'package:authandstore/screens/SignIn.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -15,7 +16,9 @@ Future<void> main() async {
       debugShowCheckedModeBanner: false,
       home: SignIn(),
       routes: {
+        "/SignIn": (context) => SignIn(),
         "/SignUp": (context) => SignUp(),
+        "/ResetPassword": (context) => ResetPassword(),
       },
     ),
   );

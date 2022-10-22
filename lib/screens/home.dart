@@ -1,5 +1,6 @@
 import 'package:authandstore/database/db_itemList.dart';
 import 'package:authandstore/screens/SignIn.dart';
+import 'package:authandstore/services/firebaseServices.dart';
 import 'package:flutter/material.dart';
 import 'package:authandstore/screens/AddScreen.dart';
 
@@ -27,7 +28,8 @@ class _HomeState extends State<Home> {
           ),
           actions: [
             IconButton(
-              onPressed: () {
+              onPressed: () async {
+                await FirebaseServices().signOut();
                 Navigator.push(context, MaterialPageRoute(
                   builder: (context) {
                     return SignIn();
